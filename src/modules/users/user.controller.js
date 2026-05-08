@@ -1,8 +1,6 @@
-const { getUserProfile } = require("./user.service");
+import { getUserProfile } from "./user.service.js";
 
-function getMe(req, res) {
-  const profile = getUserProfile(req.auth.userId);
+export async function getMe(req, res) {
+  const profile = await getUserProfile(req.auth.userId);
   res.status(200).json(profile);
 }
-
-module.exports = { getMe };

@@ -1,12 +1,13 @@
 # Express API - Tasks and Users
 
-Production-style API using Express with layered architecture, JWT bearer auth, and password hashing with bcryptjs.
+Production-style API using Express with layered architecture, JWT bearer auth, password hashing with bcryptjs, and SQLite persistence.
 
 ## Features
 
 - Express 5 API with route modules
 - JWT authentication (`Bearer <token>`)
 - Password hashing using `bcryptjs`
+- SQLite database (`sqlite3`) with auto table initialization
 - Security middlewares: `helmet`, `cors`, rate limiting
 - Request logging with `morgan`
 - Centralized error handling
@@ -40,6 +41,8 @@ cp .env.example .env
 ```bash
 npm install
 ```
+
+The database file is created automatically at `./data/app.db`.
 
 3. Run in development:
 
@@ -85,3 +88,11 @@ Run container:
 ```bash
 docker run --rm -p 3000:3000 --env-file .env tasks-users-api
 ```
+
+## Docker Compose
+
+```bash
+docker compose up --build -d
+```
+
+This uses `compose.yml` and stores SQLite data in a named volume (`sqlite_data`).

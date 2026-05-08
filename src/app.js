@@ -1,14 +1,14 @@
-const express = require("express");
-const helmet = require("helmet");
-const cors = require("cors");
-const morgan = require("morgan");
-const rateLimit = require("express-rate-limit");
+import express from "express";
+import helmet from "helmet";
+import cors from "cors";
+import morgan from "morgan";
+import rateLimit from "express-rate-limit";
 
-const authRoutes = require("./modules/auth/auth.routes");
-const userRoutes = require("./modules/users/user.routes");
-const taskRoutes = require("./modules/tasks/task.routes");
-const { notFound } = require("./middlewares/notFound");
-const { errorHandler } = require("./middlewares/errorHandler");
+import authRoutes from "./modules/auth/auth.routes.js";
+import userRoutes from "./modules/users/user.routes.js";
+import taskRoutes from "./modules/tasks/task.routes.js";
+import { notFound } from "./middlewares/notFound.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 
 const app = express();
 
@@ -36,4 +36,4 @@ app.use("/api/v1/tasks", taskRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-module.exports = app;
+export default app;

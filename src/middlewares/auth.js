@@ -1,7 +1,7 @@
-const { verifyToken } = require("../utils/token");
-const { ApiError } = require("../utils/apiError");
+import { verifyToken } from "../utils/token.js";
+import { ApiError } from "../utils/apiError.js";
 
-function requireAuth(req, _res, next) {
+export function requireAuth(req, _res, next) {
   const header = req.headers.authorization || "";
   const [scheme, token] = header.split(" ");
 
@@ -17,5 +17,3 @@ function requireAuth(req, _res, next) {
     return next(new ApiError(401, "Invalid or expired token"));
   }
 }
-
-module.exports = { requireAuth };

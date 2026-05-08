@@ -1,0 +1,16 @@
+services:
+  api:
+    build:
+      context: .
+      target: production
+    container_name: tasks-users-api
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    volumes:
+      - sqlite_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  sqlite_data:
